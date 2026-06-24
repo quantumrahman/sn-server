@@ -31,8 +31,28 @@ export const readService = async (id) => {
     return facility;
 };
 
-export const updateService = async () => {
-    console.log('update service');
+export const updateService = async (id, payload) => {
+    const facility = await Facility.findByIdAndUpdate(
+        { _id: id },
+        {
+            $set: {
+                ...payload,
+                available_slots: payload.available_slots
+                    .split(',')
+                    .map((slot) => slot.trim())
+                    .filter(Boolean),
+            },
+        },
+        {
+            returnDocument: 'after',
+        }
+    );
+
+    if (!facility) {
+        throw new AppError(404, 'Facility not found');
+    }
+
+    return facility;
 };
 
 export const deleteService = async (id) => {
