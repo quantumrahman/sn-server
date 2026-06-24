@@ -1,8 +1,13 @@
+import * as FacilityServices from '../services/facility.services.js';
+
 export const createController = async (req, res, next) => {
     try {
+        const facility = await FacilityServices.createService(req.body);
+
         return res.status(200).json({
             success: true,
             message: 'Facility create successfully',
+            data: facility || {},
         });
     } catch (error) {
         next(error);
