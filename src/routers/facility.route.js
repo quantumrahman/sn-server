@@ -2,39 +2,22 @@ import { Router } from 'express';
 
 const facilityRoute = Router();
 
-facilityRoute.route('/facilities').post((req, res) =>
-    res.status(200).json({
-        success: true,
-        message: 'POST -> Create facility',
-    })
-);
+import {
+    createController,
+    readsController,
+    readController,
+    updateController,
+    deleteController,
+} from '../controllers/facility.controllers.js';
 
-facilityRoute.route('/facilities').get((req, res) =>
-    res.status(200).json({
-        success: true,
-        message: 'GET -> Reads facilities',
-    })
-);
+facilityRoute.route('/facilities').post(createController);
 
-facilityRoute.route('/facilities/:id').get((req, res) =>
-    res.status(200).json({
-        success: true,
-        message: 'GET -> Read facility',
-    })
-);
+facilityRoute.route('/facilities').get(readsController);
 
-facilityRoute.route('/facilities/:id').patch((req, res) =>
-    res.status(200).json({
-        success: true,
-        message: 'PATCH -> Update facility',
-    })
-);
+facilityRoute.route('/facilities/:id').get(readController);
 
-facilityRoute.route('/facilities/:id').delete((req, res) =>
-    res.status(200).json({
-        success: true,
-        message: 'DELETE -> Delete facility',
-    })
-);
+facilityRoute.route('/facilities/:id').patch(updateController);
+
+facilityRoute.route('/facilities/:id').delete(deleteController);
 
 export default facilityRoute;
