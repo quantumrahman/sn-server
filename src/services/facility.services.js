@@ -18,7 +18,7 @@ export const createService = async (payload) => {
 };
 
 export const readsService = async () => {
-    console.log('reads facility');
+    return await Facility.find().lean();
 };
 
 export const readService = async () => {
