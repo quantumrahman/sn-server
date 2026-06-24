@@ -1,5 +1,8 @@
 import express from 'express';
 
+import facilityRoute from './routers/facility.route.js';
+import bookingRoute from './routers/booking.route.js';
+
 const app = express();
 
 app.use(express.json());
@@ -11,5 +14,8 @@ app.get('/', (req, res) =>
         message: 'server working properly',
     })
 );
+
+app.use('/api/v1', facilityRoute);
+app.use('/api/v1', bookingRoute);
 
 export default app;
