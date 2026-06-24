@@ -4,7 +4,7 @@ export const createController = async (req, res, next) => {
     try {
         const facility = await FacilityServices.createService(req.body);
 
-        return res.status(200).json({
+        return res.status(201).json({
             success: true,
             message: 'Facility create successfully',
             data: facility || {},
@@ -16,9 +16,12 @@ export const createController = async (req, res, next) => {
 
 export const readsController = async (req, res, next) => {
     try {
+        const facilities = await FacilityServices.readsService();
+
         return res.status(200).json({
             success: true,
             message: 'Facility reads successfully',
+            data: facilities || [],
         });
     } catch (error) {
         next(error);
