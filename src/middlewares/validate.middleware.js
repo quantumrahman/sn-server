@@ -7,6 +7,8 @@ const validateMiddleware = (req, res, next) => {
         return next(result.error);
     }
 
+    req.body = result.data;
+
     return next();
 };
 
