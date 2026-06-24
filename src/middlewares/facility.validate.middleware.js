@@ -1,6 +1,6 @@
 import facilityValidator from '../validators/facility.validator.js';
 
-const validateMiddleware = (req, res, next) => {
+const facilityValidateMiddleware = (req, res, next) => {
     const result = facilityValidator.safeParse(req.body);
 
     if (!result.success) {
@@ -12,4 +12,4 @@ const validateMiddleware = (req, res, next) => {
     return next();
 };
 
-export default validateMiddleware;
+export default facilityValidateMiddleware;
