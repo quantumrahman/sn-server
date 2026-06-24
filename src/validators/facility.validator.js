@@ -21,15 +21,15 @@ const facilityCreateValidate = z.object({
         .string({ error: 'Location field is required' })
         .min(1, 'Location is required')
         .trim(),
-    available_time_slots: z
+    available_slots: z
         .string({ error: 'Availalbe time slots field is required' })
         .min(1, 'Available time slots are required')
         .trim(),
-    price_per_hour: z
+    price_per_hour: z.coerce
         .number({ error: 'Price per hour field is required' })
         .min(0, 'Price per hour is required')
         .positive('Price per hour cannot be negative'),
-    capacity: z
+    capacity: z.coerce
         .number({ error: 'Capacity field is required' })
         .min(1, 'Capacity is required')
         .positive('Capacity cannot be negative'),
