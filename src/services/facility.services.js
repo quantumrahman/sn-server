@@ -21,8 +21,14 @@ export const readsService = async () => {
     return await Facility.find().lean();
 };
 
-export const readService = async () => {
-    console.log('read service');
+export const readService = async (id) => {
+    const facility = await Facility.findById(id).lean();
+
+    if (!facility) {
+        throw new AppError(404, 'Facility not found');
+    }
+
+    return facility;
 };
 
 export const updateService = async () => {
