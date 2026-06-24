@@ -39,6 +39,12 @@ const facilitySchema = new mongoose.Schema(
             required: [true, 'Capacity is required'],
             min: 1,
         },
+        available_slots: [
+            {
+                type: String,
+                required: [true, 'Available slots are required'],
+            },
+        ],
         description: {
             type: String,
             required: [true, 'Description is required'],
