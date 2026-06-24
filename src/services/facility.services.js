@@ -35,6 +35,12 @@ export const updateService = async () => {
     console.log('update service');
 };
 
-export const deleteService = async () => {
-    console.log('delete service');
+export const deleteService = async (id) => {
+    const facility = await Facility.findByIdAndDelete(id);
+
+    if (!facility) {
+        throw new AppError(404, 'Facility not found');
+    }
+
+    return facility;
 };
