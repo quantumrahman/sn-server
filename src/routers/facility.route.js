@@ -10,7 +10,9 @@ import {
     deleteController,
 } from '../controllers/facility.controllers.js';
 
-facilityRoute.route('/facilities').post(createController);
+import facilityValidate from '../middlewares/facility.validate.middleware.js';
+
+facilityRoute.route('/facilities').post(facilityValidate, createController);
 
 facilityRoute.route('/facilities').get(readsController);
 
