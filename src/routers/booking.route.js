@@ -9,7 +9,9 @@ import {
     updateController,
 } from '../controllers/booking.controllers.js';
 
-bookingRoute.route('/bookings').post(createController);
+import bookingValidate from '../middlewares/booking.validate.middleware.js';
+
+bookingRoute.route('/bookings').post(bookingValidate, createController);
 
 bookingRoute.route('/bookings').get(readsController);
 
